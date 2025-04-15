@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新闻资讯门户</title>
+    <style>
+        /* 全局严格统一图片尺寸系统 */
+        :root {
+            --featured-img-height: 280px;
+            --regular-img-height: 180px;
+            --gallery-img-height: 150px;
+            --hotnews-img-height: 120px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 标题系统 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .page-title {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .page-subtitle {
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+        
+        /* 严格统一的网格系统 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        /* 主新闻区块 - 所有图片严格统一 */
+        .main-news {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .featured-article {
+            grid-column: span 2;
+        }
+        
+        /* 统一图片容器 */
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        /* 严格执行统一尺寸 */
+        .featured-img {
+            height: var(--featured-img-height);
+        }
+        
+        .regular-img {
+            height: var(--regular-img-height);
+        }
+        
+        .gallery-img {
+            height: var(--gallery-img-height);
+        }
+        
+        .hotnews-img {
+            height: var(--hotnews-img-height);
+        }
+        
+        /* 确保所有图片行为一致 */
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .img-container:hover img {
+            transform: scale(1.03);
+        }
+        
+        /* 侧边栏严格统一 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        /* 热点新闻严格统一 */
+        .hot-news-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+        
+        .hot-number {
+            width: 24px;
+            height: 24px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 0.8rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-news {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-news {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <h1 class="page-title">每日新闻精选</h1>
+            <p class="page-subtitle">权威报道 · 深度解读</p>
+        </header>
+        
+        <div class="news-grid">
+            <!-- 主新闻区 - 严格统一图片尺寸 -->
+            <section class="main-news">
+                <article class="featured-article">
+                    <div class="img-container featured-img">
+                        <img src="c919_1.jpg" alt="C919大飞机">
+                    </div>
+                    <h2>中国自主研发大飞机C919成功首航</h2>
+                    <p>我国自主研制的C919大型客机圆满完成首次商业飞行...</p>
+                </article>
+                
+                <article>
+                    <div class="img-container regular-img">
+                        <img src="yuh_1.jpg" alt="亚运会开幕式">
+                    </div>
+                    <h2>第20届亚运会在杭州盛大开幕</h2>
+                    <p>杭州亚运会开幕式展现中国传统文化与现代科技...</p>
+                </article>
+                
+                <article>
+                    <div class="img-container regular-img">
+                        <img src="szfh_1.jpg" alt="数字中国峰会">
+                    </div>
+                    <h2>首届数字中国建设峰会举行</h2>
+                    <p>聚焦数字化转型，推动高质量发展...</p>
+                </article>
+            </section>
+            
+            <!-- 侧边栏 - 严格统一图片尺寸 -->
+            <aside class="sidebar">
+                <section class="hot-news">
+                    <h3>热点排行</h3>
+                    <div class="hot-news-item">
+                        <span class="hot-number">1</span>
+                        <div>
+                            <div class="img-container hotnews-img">
+                                <img src="fy4h_1.jpg" alt="风云四号B星">
+                            </div>
+                            <a href="#">我国成功发射风云四号B星</a>
+                        </div>
+                    </div>
+                    <div class="hot-news-item">
+                        <span class="hot-number">2</span>
+                        <div>
+                            <div class="img-container hotnews-img">
+                                <img src="SCB.jpg" alt="创新创业大赛">
+                            </div>
+                            <a href="#">大学生创新创业大赛决赛落幕</a>
+                        </div>
+                    </div>
+                    <div class="hot-news-item">
+                        <span class="hot-number">3</span>
+                        <div>
+                            <div class="img-container hotnews-img">
+                                <img src="dianche.jpg" alt="新能源论坛">
+                            </div>
+                            <a href="#">新能源汽车产业发展论坛召开</a>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="news-gallery">
+                    <h3>新闻图集</h3>
+                    <div class="img-container gallery-img">
+                        <img src="c919_2.jpg" alt="C919内部">
+                    </div>
+                    <div class="img-container gallery-img">
+                        <img src="yuh_2.jpg" alt="亚运会">
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
