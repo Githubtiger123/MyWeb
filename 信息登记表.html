@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息登记界面</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="registration-container">
+        <h1>信息登记</h1>
+        <form id="registration-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</label>
+                    <div class="radio-group">
+                        <input type="radio" id="male" name="gender" value="male" checked>
+                        <label for="male">男</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">女</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">电话号码</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="birthdate">出生日期</label>
+                    <input type="text" id="birthdate" name="birthdate" placeholder="yyyy/mm/dd" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="education">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历</label>
+                    <select id="education" name="education" required>
+                        <option value="" disabled selected>未选择</option>
+                        <option value="high-school">高中</option>
+                        <option value="college">大专</option>
+                        <option value="bachelor">本科</option>
+                        <option value="master">硕士</option>
+                        <option value="phd">博士</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="id-card">身份证</label>
+                    <input type="file" id="id-card" name="id-card">
+                    <div class="file-status">未选择文件</div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="notes">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</label>
+                    <textarea id="notes" name="notes" rows="3"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">提交登记</button>
+                <button type="reset" class="reset-btn">重置填写</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
