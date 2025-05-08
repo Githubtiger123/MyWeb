@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创意个人简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="resume.css">
+</head>
+<body>
+    <form class="resume-container">
+        <div class="resume-header">
+            <h1>创意简历 <i class="fas fa-magic pulse"></i></h1>
+        </div>
+
+        <div class="resume-content">
+            <div class="section-group">
+                <div class="photo-section">
+                    <div class="photo-carousel">
+                        <img src="http://img0.baidu.com/it/u=1244073879,2477402592&fm=253&app=138&f=JPEG?w=800&h=1311" alt="个人照片1" class="active">
+                        <img src="https://img0.baidu.com/it/u=2191392668,814349101&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=1399" alt="个人照片2">
+                        <img src="http://img2.baidu.com/it/u=3364932024,431806429&fm=253&app=138&f=JPEG?w=800&h=1422" alt="个人照片3">
+                        <div class="carousel-indicators">
+                            <span class="active"></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="photo-upload">
+                        <input type="file" id="photo-upload" accept="image/*" multiple>
+                        <label for="photo-upload"><i class="fas fa-camera-retro"></i> 上传照片</label>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-signature"></i>姓名</label>
+                        <input type="text" class="section-content" value="王爱虎">
+                    </div>
+                    
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-user-tie"></i>性别</label>
+                        <select class="section-content">
+                            <option value="男">男</option>
+                            <option value="女">女</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-birthday-cake"></i>年龄</label>
+                        <input type="number" class="section-content" value="28" min="1" max="100">
+                    </div>
+                    
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-map-marked-alt"></i>籍贯</label>
+                        <input type="text" class="section-content" value="烟台">
+                    </div>
+                    
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-mobile-alt"></i>联系电话</label>
+                        <input type="tel" class="section-content" value="13800138000">
+                    </div>
+                    
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-at"></i>电子邮箱</label>
+                        <input type="email" class="section-content" value="creative@qq.com">
+                    </div>
+                    
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-graduation-cap"></i>学历</label>
+                        <select class="section-content">
+                            <option value="本科">本科</option>
+                            <option value="大专">大专</option>
+                            <option value="硕士" selected>硕士</option>
+                            <option value="博士">博士</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-group">
+                <div class="info-section">
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-bullseye"></i>求职意向</label>
+                        <input type="text" class="section-content" value="UI/UX设计师">
+                    </div>
+                    
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-laptop-code"></i>专业</label>
+                        <input type="text" class="section-content" value="数字媒体艺术">
+                    </div>
+                    
+                    <div class="info-item">
+                        <label class="section-title"><i class="fas fa-university"></i>毕业院校</label>
+                        <input type="text" class="section-content" value="中央美术学院">
+                    </div>
+                </div>
+            </div>
+
+            <div class="full-width-section">
+                <div class="section-title"><i class="fas fa-lightbulb"></i>专业技能</div>
+                <div class="section-content">
+                    <ul class="skills-list" id="skills-list">
+                        <li>
+                            <input type="text" value="Photoshop & Illustrator 精通">
+                            <button class="remove-btn"><i class="fas fa-times-circle"></i></button>
+                        </li>
+                        <li>
+                            <input type="text" value="Figma & Sketch 熟练">
+                            <button class="remove-btn"><i class="fas fa-times-circle"></i></button>
+                        </li>
+                        <li>
+                            <input type="text" value="HTML/CSS/JavaScript 基础">
+                            <button class="remove-btn"><i class="fas fa-times-circle"></i></button>
+                        </li>
+                    </ul>
+                    <button class="add-btn" id="add-skill"><i class="fas fa-plus-circle"></i> 添加技能</button>
+                </div>
+            </div>
+
+            <div class="full-width-section">
+                <div class="section-title"><i class="fas fa-project-diagram"></i>项目经验</div>
+                <div class="section-content">
+                    <ul class="projects-list" id="projects-list">
+                        <li>
+                            <input type="text" value="电商平台UI设计">
+                            <button class="remove-btn"><i class="fas fa-times-circle"></i></button>
+                        </li>
+                        <li>
+                            <input type="text" value="移动应用用户体验优化">
+                            <button class="remove-btn"><i class="fas fa-times-circle"></i></button>
+                        </li>
+                    </ul>
+                    <button class="add-btn" id="add-project"><i class="fas fa-plus-circle"></i> 添加项目</button>
+                </div>
+            </div>
+
+            <div class="full-width-section">
+                <div class="section-title"><i class="fas fa-star"></i>个人优势</div>
+                <div class="section-content">
+                    <textarea class="self-evaluation">作为一名富有创意的设计师，我拥有敏锐的美学感知和出色的视觉表达能力。
+
+我擅长将复杂的概念转化为直观、美观的设计方案，注重用户体验与视觉美感的平衡。
+
+在团队合作中，我具有良好的沟通能力和协作精神，能够快速理解需求并提出创新解决方案。
+
+我持续关注设计趋势和新兴技术，热衷于学习和探索新的设计工具和方法论。</textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn"><i class="fas fa-cloud-upload-alt"></i> 保存简历</button>
+                <button type="reset" class="reset-btn"><i class="fas fa-sync-alt"></i> 重置表单</button>
+            </div>
+        </div>
+    </form>
+
+    <script src="resume.js"></script>
+</body>
+</html>
