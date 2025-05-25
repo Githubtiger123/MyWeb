@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高对比度彩色灯光模拟器</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #111;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        .control-panel {
+            margin-bottom: 40px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        #startBtn {
+            background-color: #00C853;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.5);
+        }
+        
+        #stopBtn {
+            background-color: #FF3D00;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 61, 0, 0.5);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        .lamp-container {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .lamp {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: relative;
+            transition: all 0.5s ease;
+            /* 增强的发光效果 */
+            background: radial-gradient(
+                circle at 40% 40%,
+                rgba(255, 255, 255, 0.9) 0%,
+                currentColor 30%,
+                rgba(0, 0, 0, 0.1) 70%
+            );
+            box-shadow: 
+                0 0 25px 8px currentColor,
+                inset 0 0 20px rgba(255, 255, 255, 0.9);
+            filter: brightness(1.3);
+        }
+        
+        .lamp::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 40px;
+            background: linear-gradient(to bottom, #666, #444);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .title {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">高对比度彩色灯光</h1>
+    
+    <div class="control-panel">
+        <button id="startBtn">启动</button>
+        <button id="stopBtn">停止</button>
+    </div>
+    
+    <div class="lamp-container">
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+        <div class="lamp"></div>
+    </div>
+
+    <script>
+        const lamps = document.querySelectorAll('.lamp');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        
+        // 高对比度的7种颜色 (使用HSL色彩空间确保差异最大化)
+        const colors = [
+            'hsl(0, 100%, 50%)',    // 纯红
+            'hsl(120, 100%, 50%)',  // 纯绿
+            'hsl(240, 100%, 50%)',  // 纯蓝
+            'hsl(60, 100%, 50%)',   // 纯黄
+            'hsl(300, 100%, 50%)',  // 品红
+            'hsl(180, 100%, 50%)',  // 青色
+            'hsl(30, 100%, 50%)'    // 橙色
+        ];
+        
+        let animationInterval;
+        let isAnimating = false;
+        let currentColorSet = [...colors];
+        
+        // 确保获取的颜色与当前所有灯颜色都不同
+        function getDistinctColor(usedColors) {
+            const availableColors = colors.filter(color => !usedColors.includes(color));
+            if (availableColors.length === 0) return colors[Math.floor(Math.random() * colors.length)];
+            return availableColors[Math.floor(Math.random() * availableColors.length)];
+        }
+        
+        function animateLamps() {
+            const usedColors = [];
+            const newColors = [];
+            
+            // 首先生成7个不同的新颜色
+            for (let i = 0; i < lamps.length; i++) {
+                const newColor = getDistinctColor(usedColors);
+                newColors.push(newColor);
+                usedColors.push(newColor);
+            }
+            
+            // 应用新颜色
+            lamps.forEach((lamp, index) => {
+                lamp.style.color = newColors[index];
+                
+                // 增强闪烁效果
+                lamp.style.filter = 'brightness(1.8)';
+                setTimeout(() => {
+                    lamp.style.filter = 'brightness(1.3)';
+                }, 200);
+            });
+        }
+        
+        function startAnimation() {
+            if (isAnimating) return;
+            
+            isAnimating = true;
+            animateLamps(); // 立即执行一次
+            animationInterval = setInterval(animateLamps, 1000);
+        }
+        
+        function stopAnimation() {
+            if (!isAnimating) return;
+            
+            isAnimating = false;
+            clearInterval(animationInterval);
+            
+            // 重置灯光为初始高对比度颜色
+            lamps.forEach((lamp, index) => {
+                lamp.style.color = colors[index];
+                lamp.style.filter = 'brightness(1.3)';
+            });
+        }
+        
+        startBtn.addEventListener('click', startAnimation);
+        stopBtn.addEventListener('click', stopAnimation);
+        
+        // 初始化灯光颜色
+        stopAnimation();
+    </script>
+</body>
+</html>
